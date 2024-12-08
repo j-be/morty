@@ -21,7 +21,7 @@ export const calculatePlan = (
 		year = nextYearMonth.year;
 
 		const dateKey = `${month}/${year}`;
-		const date = new Date(2000 + year, month - 1);
+		const date = new Date(2000 + year, month - 1, 30);
 
 		let instalments = 3.0 * instalment;
 		const unscheduledRepayment = unscheduledRepayments[dateKey];

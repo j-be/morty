@@ -1,2 +1,6 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import LineChart from '$lib/components/line-chart.svelte';
+	import { loanData, unscheduledRepayments, plannedRepayments } from '$lib/data';
+</script>
+
+<LineChart {loanData} {unscheduledRepayments} {plannedRepayments} />
