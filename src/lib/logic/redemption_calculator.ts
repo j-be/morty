@@ -26,7 +26,8 @@ export const calculatePlan = (
 		let instalments = 3.0 * instalment;
 		const unscheduledRepayment = unscheduledRepayments[dateKey];
 		if (unscheduledRepayment) {
-			instalments += unscheduledRepayment * loanParameters.penitentFactor;
+			instalments += unscheduledRepayment;
+			sumInstalments += unscheduledRepayment * loanParameters.penitentFactor;
 		}
 		remainder -= instalments;
 		sumInstalments += instalments;
