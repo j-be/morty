@@ -2,6 +2,8 @@
 	import { loanDataStore } from '$lib/store';
 
 	let showModal = $state(false);
+
+	// svelte-ignore non_reactive_update
 	let { amount, instalment, rate, penitentFactor } = $loanDataStore.parameters;
 
 	const hide = () => (showModal = false);
