@@ -28,7 +28,7 @@
 	let container: HTMLElement;
 
 	onMount(() => {
-		const resizeObserver = new ResizeObserver(entries => {
+		const resizeObserver = new ResizeObserver((entries) => {
 			const entry = entries.at(0);
 			if (entry) {
 				width = entry.contentRect.width;
@@ -38,7 +38,7 @@
 		return () => resizeObserver.unobserve(container);
 	});
 
-	let height = $derived(width * 10 / 16);
+	let height = $derived((width * 10) / 16);
 	let x = $derived(d3.scaleUtc([base.plan[0].date, base.last.date], [marginLeft, width - 20]));
 	let y = $derived(d3.scaleLinear([0, loanData.amount], [height - 30, 20]));
 
@@ -80,11 +80,11 @@
 		</thead>
 		<tbody>
 			{#each [{ label: 'Base', plan: base }, { label: 'Current', plan: current }, { label: 'Projected', plan: projected }] as item}
-			<tr>
-				<th scope="row">{item.label}</th>
-				<td>{item.plan.last.date.toLocaleDateString()}</td>
-				<td>{formatNumber(item.plan.sumInstalments)} €</td>
-			</tr>
+				<tr>
+					<th scope="row">{item.label}</th>
+					<td>{item.plan.last.date.toLocaleDateString()}</td>
+					<td>{formatNumber(item.plan.sumInstalments)} €</td>
+				</tr>
 			{/each}
 		</tbody>
 	</table>
