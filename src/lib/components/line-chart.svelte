@@ -15,9 +15,9 @@
 
 	let { loanData, unscheduledRepayments, plannedRepayments }: LineChartProps = $props();
 
-	let base = $state(calculatePlan(loanData, {}));
-	let current = $state(calculatePlan(loanData, unscheduledRepayments));
-	let projected = $state(calculatePlan(loanData, { ...unscheduledRepayments, ...plannedRepayments }));
+	let base = $derived(calculatePlan(loanData, {}));
+	let current = $derived(calculatePlan(loanData, unscheduledRepayments));
+	let projected = $derived(calculatePlan(loanData, { ...unscheduledRepayments, ...plannedRepayments }));
 	let width = $state(1280);
 
 	const marginBottom = 30;

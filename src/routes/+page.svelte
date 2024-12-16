@@ -1,6 +1,17 @@
 <script lang="ts">
 	import LineChart from '$lib/components/line-chart.svelte';
-	import { loanData, unscheduledRepayments, plannedRepayments } from '$lib/data';
+	import UnscheduledRepayments from '$lib/components/unscheduled-repayments.svelte';
+	import { loanDataStore, unscheduledRepayments, plannedRepayments } from '$lib/store';
 </script>
 
-<LineChart {loanData} {unscheduledRepayments} {plannedRepayments} />
+<article>
+	<LineChart
+		loanData={$loanDataStore.parameters}
+		unscheduledRepayments={$unscheduledRepayments}
+		plannedRepayments={$plannedRepayments}
+	/>
+</article>
+
+<article>
+	<UnscheduledRepayments />
+</article>

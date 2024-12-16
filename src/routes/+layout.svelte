@@ -1,10 +1,12 @@
 <script>
+	import Settings from '$lib/components/settings.svelte';
 	import '../app.sass';
 </script>
 
 <header>
 	<div class="container">
 		<h1>Morty</h1>
+		<Settings />
 	</div>
 </header>
 <main class="container">
