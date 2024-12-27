@@ -25,6 +25,9 @@
 			copy[list] = [...current[list], { month, amount: Number(amount) }];
 			return copy;
 		});
+
+		month = '';
+		amount = '';
 	};
 
 	const remove = (indexToRemove: number) => {
