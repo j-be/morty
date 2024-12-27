@@ -12,7 +12,14 @@
 	let month = $state('');
 	let amount = $state('');
 
+	let monthInvalid = $derived(!month ? null : !/^(3|6|9|12)\/\d{2}$/.test(month));
+	let amountInvalid = $derived(!amount ? null : !/\d+$/.test(amount));
+
 	const add = () => {
+		if (!month || monthInvalid || !amount || amountInvalid) {
+			return;
+		}
+
 		repaymentsStore.update((current) => {
 			const copy = { ...current };
 			copy[list] = [...current[list], { month, amount: Number(amount) }];
@@ -49,8 +56,8 @@
 	<tfoot>
 		<tr>
 			<td><button onclick={add}>+</button></td>
-			<td><input bind:value={month} placeholder="Month" aria-label="Month" /></td>
-			<td><input bind:value={amount} placeholder="Amount" aria-label="Amount" /></td>
+			<td><input bind:value={month} placeholder="Month" aria-label="Month" aria-invalid={monthInvalid} /></td>
+			<td><input bind:value={amount} placeholder="Amount" aria-label="Amount" aria-invalid={amountInvalid} /></td>
 		</tr>
 	</tfoot>
 </table>
