@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 
 	import { calculatePlan } from '$lib/logic/redemption_calculator';
-	import { formatNumber } from '$lib/utils';
+	import { formatNumber, merge } from '$lib/utils';
 
 	interface LineChartProps {
 		loanData: LoanParameters;
@@ -17,7 +17,7 @@
 
 	let base = $derived(calculatePlan(loanData, {}));
 	let current = $derived(calculatePlan(loanData, unscheduledRepayments));
-	let projected = $derived(calculatePlan(loanData, { ...unscheduledRepayments, ...plannedRepayments }));
+	let projected = $derived(calculatePlan(loanData, merge(unscheduledRepayments, plannedRepayments)));
 	let width = $state(1280);
 
 	const marginBottom = 30;
