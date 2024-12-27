@@ -38,7 +38,7 @@
 		return () => resizeObserver.unobserve(container);
 	});
 
-	let height = $derived((width * 10) / 16);
+	let height = $derived((width * 5) / 16);
 	let x = $derived(d3.scaleUtc([base.plan[0].date, base.last.date], [marginLeft, width - 20]));
 	let y = $derived(d3.scaleLinear([0, loanData.amount], [height - 30, 20]));
 
@@ -65,9 +65,9 @@
 
 		<path fill="none" stroke="#017FC0" stroke-width="1.5" d={today} />
 
-		<path fill="none" stroke="#D93526" stroke-width="1.5" d={line(base.plan)} />
-		<path fill="none" stroke="#398712" stroke-width="1.5" d={line(current.plan)} />
 		<path fill="none" stroke="#977000" stroke-width="1.5" d={line(projected.plan)} />
+		<path fill="none" stroke="#398712" stroke-width="1.5" d={line(current.plan)} />
+		<path fill="none" stroke="#D93526" stroke-width="1.5" d={line(base.plan)} />
 	</svg>
 
 	<table style="max-width: {width}px">
